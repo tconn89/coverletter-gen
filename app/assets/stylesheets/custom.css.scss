@@ -1,0 +1,38 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+@mixin input_shadow {
+	-webkit-box-shadow: 4px 5px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 7px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 6px 7px 5px 0px rgba(0,0,0,0.75);
+}
+
+.logo{
+	width: 50%;
+	margin-bottom: -30px
+}
+.add{
+	font-size: 2.5em;
+	width: 50%;
+	margin-bottom: 10px;
+	@include input_shadow; 
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}

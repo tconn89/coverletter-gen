@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'cards/index'
+  get 'cards/new'
+
+
+  get 'decks/new'
+
+
+
+  resources :cards
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -11,14 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917070225) do
+ActiveRecord::Schema.define(version: 20150921071127) do
 
-  create_table "users", force: :cascade do |t|
+  create_table "bridges", force: :cascade do |t|
+    t.integer  "deck_id"
+    t.integer  "card_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "duplicate"
+  end
+
+  add_index "bridges", ["card_id"], name: "index_bridges_on_card_id"
+  add_index "bridges", ["deck_id"], name: "index_bridges_on_deck_id"
+
+  create_table "cards", force: :cascade do |t|
     t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "decks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
+    t.string   "role"
   end
 
 end
