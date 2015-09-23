@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  get 'cards/index'
-  get 'cards/new'
 
+  root 'application#index'
+  get 'search' => 'cards#query'
 
   get 'decks/new'
-
-
 
   resources :cards
 

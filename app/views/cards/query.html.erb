@@ -1,7 +1,7 @@
 <%= image_tag "hearthstone.png", class: "logo" %>
 <h1>What Deck are you playing against?</h1>
 <!-- list cards in deck -->
- <%= form_tag('/cards/index', :method => "get", class: "deck-search", id: "deck-search") do %>
+ <%= form_tag('/search', :method => "get", class: "deck-search", id: "deck-search") do %>
     <div class="input-container">
       <%= text_field_tag :search, params[:search], class: "add", placeholder: " Add a few cards.." %>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
@@ -11,7 +11,7 @@
   <% end %>
   <% if @decks %>
 		<% @decks.each do |deck| %>
-			<p>  <%= deck %> </p>
+			<p>  <%= deck.name %> </p>
 		<% end %>
 	<% else %>
 		<p> waiting for input </p>

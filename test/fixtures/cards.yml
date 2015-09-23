@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  deck_id: 1
 
 two:
   name: MyString
-  deck_id: 1

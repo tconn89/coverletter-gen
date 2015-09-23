@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 /* mixins, variables, etc. */
 
@@ -16,15 +17,61 @@ $gray-medium-light: #eaeaea;
 	box-shadow: 6px 7px 5px 0px rgba(0,0,0,0.75);
 }
 
+body{
+	background: asset_url('bg1.png');
+	background-size: 100% auto;
+}
+.container{
+	max-width: 1000px;
+	width: 75%;
+	background: white;
+}
+/* table styles */
+th, td {
+	color: white;
+	padding: 5px;
+	border: #808080 1px solid;
+}
+th{
+	background-color: #222;
+}
+td{
+	background-color: #0c1013;
+	opacity: 0.9;
+}
+td a {
+	display: block;
+	width: 100%;
+}
+tbody tr:hover{
+	background-color:#4f4036; 
+}
+
+tbody tr:hover a{
+	color:white;
+}
+td a:hover{
+	text-decoration: none;
+}
+
 .logo{
 	width: 50%;
 	margin-bottom: -30px
 }
 .add{
-	font-size: 2.5em;
+	height: 34px;
+	font-size: 100%;
+	padding: 0 5px;
 	width: 50%;
 	margin-bottom: 10px;
-	@include input_shadow; 
+}
+.add:hover{
+	border: #33D633 solid 1px;
+}
+.input-container .btn{
+	border-radius: 0;
+	border-top: 2px;
+	border-bottom: 2px;
 }
 
 /* miscellaneous */

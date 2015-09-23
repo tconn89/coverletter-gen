@@ -15,4 +15,8 @@ class Deck < ActiveRecord::Base
 		end
 		return names
 	end
+
+	def has? card_record
+		Bridge.exists?(deck_id:self.id,card_id:card_record.id)
+	end
 end

@@ -44,9 +44,10 @@ def data_input src
 	return true
 end
 
-x = 121100
+# collected 121k to 123k so far
+x = 122000
 count = 0
-while x < 122000 
+while x < 123000 
 	if data_input(page(x))
 		count += 1
 		puts x
