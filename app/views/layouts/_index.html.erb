@@ -3,7 +3,7 @@
 <!-- list cards in deck -->
  <%= form_tag('/search', :method => "get", class: "deck-search", id: "deck-search") do %>
     <div class="input-container">
-      <%= text_field_tag :search, params[:search], class: "add", placeholder: " Add a few cards..", autofocus: true%>
+      <%= text_field_tag :search, params[:search], class: "add", placeholder: " Add a few cards..", data: {autocomplete_source: cards_path}, autofocus: true%>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
       <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
@@ -36,4 +36,4 @@
       </tbody>
     </table>
     </div>
-
+    <div> <% %> </div>

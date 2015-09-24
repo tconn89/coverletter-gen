@@ -1,4 +1,17 @@
 class CardsController < ApplicationController
+
+
+	def index
+		term = params[:term]
+		if term.length > 2
+			while term =~ /(.*),/
+				term.slice!(/(.*),/)
+			end
+			@cards = Card.order(:name).where("name LIKE ?", "#{term}%")
+			render json: @cards.map(&:name)
+		end
+	end
+
   def new
   	puts 'hello'
   end
