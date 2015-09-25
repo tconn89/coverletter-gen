@@ -1,39 +1,23 @@
 <%= image_tag "hearthstone.png", class: "logo" %>
-<h1>What Deck are you playing against?</h1>
-<!-- list cards in deck -->
+<!-- Possible Cards Seen Listing
+<div class="seen-list">
+  <h3>CARDS SEEN</h3>
+  <ul>
+    <li><%= @cards %></li>
+  </ul>
+</div>
+-->
+
+<div class ="col-md-5">
+  <%= image_tag "aspirations.png", class: "legend-img" %>
+</div>
  <%= form_tag('/search', :method => "get", class: "deck-search", id: "deck-search") do %>
     <div class="input-container">
-      <%= text_field_tag :search, params[:search], class: "add", placeholder: " Add a few cards..", data: {autocomplete_source: cards_path}, autofocus: true%>
+      <label for="search">Card Name(s)</label><br/>
+      <%= text_field_tag :search, params[:search], id: "search", class: "add", placeholder: " Add a few cards..", data: {autocomplete_source: cards_path}, autofocus: true%>
+      <div class="saved-value"></div>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
            of using a Rails form helper -->
-      <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
+      <button id="the-one" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button>
     <% end %>
 
-    </div>
-    <div class="deck-parent"> 
-    <table>
-      <thead>
-        <tr>
-          <th>
-            <span>#</span>
-          </th>
-          <th>
-            <span>name</span>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        <% if @decks %>
-          <% @decks.each_with_index do |deck,i| %>
-            <% partials = deck.name.gsub(' ', '+') %>
-            <tr><td><%="#{i+1}"%></td>
-            <td><%= link_to("#{deck.name}", "http://www.hearthhead.com/search?q=#{partials}")%> </td></tr>
-          <% end %>
-        <% else %>
-          <tr> waiting for input </tr>
-        <% end %>
-      </tbody>
-    </table>
-    </div>
-    <div> <% %> </div>

@@ -5,3 +5,12 @@ jQuery ->
   $('.add').autocomplete
   	source: $('.add').data('autocomplete-source')
   	autoFocus:true
+  	select: (event, ui) ->
+  		prior = $('.saved-value').text()
+  		if prior
+	  		$('.add').val(prior + ' ' + ui.item.value)
+	  		false
+  		else
+  			$('.add').val(ui.item.value + ', ')
+  			$('.saved-value').text(ui.item.value + ',')
+   		false

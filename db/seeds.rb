@@ -14,13 +14,13 @@ def page num
 	return source
 end
 
-def data_input src
+def data_input src, x
 	deckName = getDeckName src
 	if deckName =~ /Error/ 
 		return false
 	else
 		begin
-		d = Deck.create(name:deckName, role:"Priest")
+		d = Deck.create(name:deckName, role:"Priest", hearthhead_id: x)
 		rescue Encoding::UndefinedConversionError => e
 			puts deckName
 			return false
@@ -47,8 +47,8 @@ end
 # collected 121k to 123k so far
 x = 122000
 count = 0
-while x < 123000 
-	if data_input(page(x))
+while x < 124000 
+	if data_input(page(x), x)
 		count += 1
 		puts x
 	end

@@ -21,11 +21,13 @@ body{
 	background: asset_url('bg1.png');
 	background-size: 100% auto;
 }
-.container{
+.my-container{
 	max-width: 1000px;
 	width: 75%;
 	background: white;
+	margin: 0 auto;
 }
+
 /* table styles */
 th, td {
 	color: white;
@@ -55,8 +57,12 @@ td a:hover{
 }
 
 .logo{
-	width: 50%;
-	margin-bottom: -30px
+	width: 60%;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+	margin-bottom: -40px;
+	margin-top: -40px;
 }
 .add{
 	height: 34px;
@@ -78,6 +84,44 @@ td a:hover{
 	border-top: 2px;
 	border-bottom: 2px;
 }
+.saved-value{
+	display: none;
+}
+/* ---------- Before Search Styles -------- */
+
+.img-container {
+	color: white;
+	font-size: 28px;
+	font-family: "Arial Rounded MT Bold";
+	height: 340px;
+	background: image-url('bg2.png');
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	margin-top: 30px;
+	padding-top: 40px;
+	.col-md-4{
+		text-align: center;
+		padding: 0 10px;
+		img{
+			display: block;
+			margin: 10px auto;
+			width: 70%;
+		}
+	}
+}
+.legend-img{
+	width: 90%;
+	margin: 0 auto;
+}
+
+/* FOOTER ---------------*/
+#footer {
+	background-color: black;
+	color: white;
+	text-align: right;
+	padding: 10px;
+
+}
 
 /* miscellaneous */
 
@@ -87,4 +131,55 @@ td a:hover{
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+/* Repsponsive Styles*/
+$break-small: 360px;
+$break-large: 1200px;
+$phone: "screen and (max-width : 360px)";
+.my-container, {
+  @media #{$phone} {
+    width: 85%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @media screen and (min-width: $break-large) {
+
+  }
+}
+#footer img{
+	@media #{phone} {
+			height: 100%;
+	}
+}
+.add {
+  @media #{$phone} {
+  	width: 85%;
+  	display: block;
+  	padding-left: 2px;
+  	margin-left: auto;
+  	margin-right: auto;
+  	border-radius: 4px;
+  }
+}
+#the-one {
+  @media #{$phone} {
+  	width: 85%;
+  	display: block;
+  	margin: 0 auto;
+  	border-radius: 4px;
+  	margin-bottom: 10px;
+  }
+}
+h1 {
+	@media #{$phone} {	
+		font-size: 20px;	
+		text-align: center;
+	}
+}
+table, .input-container {
+	@media #{$phone} {
+		width: 100%;
+		border-radius: 4px;
+	}
 }

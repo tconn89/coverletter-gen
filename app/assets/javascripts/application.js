@@ -15,3 +15,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+//$(window).ready(function(){
+//	winHeight = $(window).height();
+//	$('.container').css('min-height',winHeight);
+//});

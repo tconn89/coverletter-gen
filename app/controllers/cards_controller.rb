@@ -1,12 +1,14 @@
 class CardsController < ApplicationController
 
-
+	# root page input logic
 	def index
 		term = params[:term]
+		while term =~ /(.*),/
+			term.slice!(/(.*),/)
+		end
+		term.strip!
+
 		if term.length > 2
-			while term =~ /(.*),/
-				term.slice!(/(.*),/)
-			end
 			@cards = Card.order(:name).where("name LIKE ?", "#{term}%")
 			render json: @cards.map(&:name)
 		end
@@ -22,12 +24,20 @@ class CardsController < ApplicationController
   	@list = deck.getCards
   end
 
+  # search database for matching decks
   def query
 		if params[:search]
-			criteria = params[:search].split(', ')
-			puts criteria
+			criteria = params[:search].split(',')
+			criteria.each do |criterium|
+				criterium.strip!
+				criterium = criterium.split.map(&:capitalize).join(' ')
+			end
 			criteria.each_with_index do |card_name,i|
 				c = Card.find_by(name: card_name)	
+				if !c
+					@decks = 'NO RESULTS'
+					return
+				end
 				if(i == 0) 
 					@decks = c.what_decks
 				else
