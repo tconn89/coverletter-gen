@@ -6,11 +6,14 @@ jQuery ->
   	source: $('.add').data('autocomplete-source')
   	autoFocus:true
   	select: (event, ui) ->
-  		prior = $('.saved-value').text()
-  		if prior
-	  		$('.add').val(prior + ' ' + ui.item.value)
-	  		false
-  		else
-  			$('.add').val(ui.item.value + ', ')
-  			$('.saved-value').text(ui.item.value + ',')
-   		false
+      prior = $('.saved-value').text()
+      append(prior,ui)
+      $('.saved-value').text(prior + ui.item.value + ',')
+      return false
+
+append = (truth, ui) ->
+  if truth
+    console.log(truth)
+    $('.add').val(truth + ' ' + ui.item.value + ', ')
+  else
+    $('.add').val(ui.item.value + ', ')

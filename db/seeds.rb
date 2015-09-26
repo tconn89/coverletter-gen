@@ -35,8 +35,11 @@ def data_input src, x
 			end
 
 			c = Card.create(name:c)
-			if !c.id
+			if !c
 				c = Card.find_by(name:c.name)
+			end
+			if !c
+				break
 			end
 			Bridge.create(deck_id:d.id,card_id:c.id,duplicate:dup)
 		end
@@ -45,9 +48,9 @@ def data_input src, x
 end
 
 # collected 121k to 123k so far
-x = 122000
+x = 122918
 count = 0
-while x < 124000 
+while x < 128000 
 	if data_input(page(x), x)
 		count += 1
 		puts x

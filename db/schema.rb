@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150924063458) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bridges", force: :cascade do |t|
     t.integer  "deck_id"
     t.integer  "card_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20150924063458) do
     t.boolean  "duplicate"
   end
 
-  add_index "bridges", ["card_id"], name: "index_bridges_on_card_id"
-  add_index "bridges", ["deck_id"], name: "index_bridges_on_deck_id"
+  add_index "bridges", ["card_id"], name: "index_bridges_on_card_id", using: :btree
+  add_index "bridges", ["deck_id"], name: "index_bridges_on_deck_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
     t.string   "name"

@@ -7,7 +7,8 @@ class CardsController < ApplicationController
 			term.slice!(/(.*),/)
 		end
 		term.strip!
-
+		term.capitalize!
+		puts term
 		if term.length > 2
 			@cards = Card.order(:name).where("name LIKE ?", "#{term}%")
 			render json: @cards.map(&:name)

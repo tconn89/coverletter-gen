@@ -1,8 +1,8 @@
 class Card < ActiveRecord::Base
 	has_many :bridges
 	has_many :decks, :through => :bridges
+	validates :name, presence: true
 	validates :name, uniqueness: { case_sensitive: false }
-
 	# Takes input card record and outputs list of deck records
 	def what_decks
 		b = Bridge.where(card_id:self.id)

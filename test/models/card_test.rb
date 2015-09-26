@@ -2,7 +2,11 @@ require 'test_helper'
 
 class CardTest < ActiveSupport::TestCase
 
-
+	test "Ogre Brute random sample existence" do
+		c1 = Card.find_by(name:'Ogre Brute')
+		assert c1, 'Ogre Brute does not exist'
+		puts Card.find(171)
+	end
 
   test "card should be unique" do
   	duplicate_card = @card.dup

@@ -12,10 +12,15 @@ class ActiveSupport::TestCase
 		@deck2 = Deck.new(name: 'example_deck1', role: 'Warlock')
 		@deck3 = Deck.new(name: 'example_deck2', role: 'Priest')
 		@deck4 = Deck.new(name: 'example_deck2', role: 'Priest')
-		@decks = [@deck1,@deck2,@deck3,@deck4]
-		@decks.each do |deck|
+		@_decks = [@deck1,@deck2,@deck3,@deck4]
+		@_decks.each do |deck|
 			deck.save
 		end
+
+		c1 = Card.create(name:'Ogre Brute')
+		c2 = Card.create(name:'Ironbeak Owl')
+		Bridge.create(deck_id:@deck1.id,card_id:c1.id)
+		Bridge.create(deck_id:@deck1.id,card_id:c2.id)
 	end
 
 	def add_bridges card, decks
