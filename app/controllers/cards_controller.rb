@@ -29,10 +29,12 @@ class CardsController < ApplicationController
   def query
 		if params[:search]
 			criteria = params[:search].split(',')
-			criteria.each do |criterium|
+			criteria.each_with_index do |criterium,i|
+				criterium.sub! /,/, ''
 				criterium.strip!
 				criterium = criterium.split.map(&:capitalize).join(' ')
 			end
+			criteria.delete_if {|i| i.empty?}
 			criteria.each_with_index do |card_name,i|
 				c = Card.find_by(name: card_name)	
 				if !c
